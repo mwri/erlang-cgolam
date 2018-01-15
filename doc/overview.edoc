@@ -1,0 +1,14 @@
+@author Michael Wright <mjw@methodanalysis.com>
+@copyright 2018 Michael Wright <mjw@methodanalysis.com>
+@version 1.0.0
+@title Conway's Game of Life, And Modifications
+
+@doc
+
+
+<b>LICENSING</b>
+
+This file is part of the Erlang A* search library called 'astar'.
+
+'cgolam' is free software, you can redistribute it and/or modify
+it under the terms of the MIT License.

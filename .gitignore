@@ -1,0 +1,9 @@
+/cgolam.plt
+/deps/
+/dialyzer.log
+/ebin/
+/erl_crash.dump
+/logs/
+/otp.plt
+/.rebar/
+/test/*_tests_SUITE.beam

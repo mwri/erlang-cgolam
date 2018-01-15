@@ -1,0 +1,4 @@
+language: erlang
+install: true
+otp_release:
+  - 19.1
