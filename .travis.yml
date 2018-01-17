@@ -6,3 +6,5 @@ script: make && make test
 install: true
 otp_release:
   - 19.1
+after_failure:
+  - cat logs/raw.log
