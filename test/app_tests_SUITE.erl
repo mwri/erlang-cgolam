@@ -9,7 +9,7 @@
 
 -define(cgolam_games_env, [[
 	{field, cgolam_field_ets, []},
-	{width, 40}, {height, 40},
+	{width, 60}, {height, 60},
 	{rules, cgolam_rules_normal, []},
 	{display, cgolam_display_wx, [
 		{sqsize, 4},

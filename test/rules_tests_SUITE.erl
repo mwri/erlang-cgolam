@@ -9,7 +9,10 @@
 
 -define(rules_modules, [
 	{cgolam_rules_normal, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]},
-	{cgolam_rules_coloured, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]}
+	{cgolam_rules_coloured, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]},
+	{cgolam_rules_species1, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]},
+	{cgolam_rules_species2, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]},
+	{cgolam_rules_species3, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]}
 ]).
 
 -define(rules_tests, [
@@ -120,6 +123,15 @@ cellstate_initvalue(cgolam_rules_coloured) ->
 		trunc(rand:uniform() * 256) band 16#f8,
 		trunc(rand:uniform() * 256) band 16#f8
 	}}
+;
+cellstate_initvalue(cgolam_rules_species1) ->
+	{col, {40, 200, 100}}
+;
+cellstate_initvalue(cgolam_rules_species2) ->
+	{col, {40, 200, 100}}
+;
+cellstate_initvalue(cgolam_rules_species3) ->
+	{col, {40, 200, 100}}
 .
 
 
@@ -152,5 +164,25 @@ test_init(Config) ->
 		true ->
 			ok
 		end,
+	AnotherField1 = FieldMod:new(FieldCfg),
+	AnotherField2 = RulesMod:init(
+		Rules,
+		AnotherField1,
+		term,
+		[{set, [
+			{{1, 1}, cellstate_initvalue(RulesMod)},
+			{{1, 2}, cellstate_initvalue(RulesMod)},
+			{{0, 4}, cellstate_initvalue(RulesMod)}
+			]}]
+		),
+	AnotherAllCells = FieldMod:all(AnotherField2),
+	AnotherAliveCount = lists:foldl(
+		fun ({_Coords, false}, Acc) -> Acc;
+			({_Coords, _Alive}, Acc) -> Acc + 1
+			end,
+		0,
+		AnotherAllCells
+	),
+	3 = AnotherAliveCount,
 	ok
 .

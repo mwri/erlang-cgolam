@@ -1,6 +1,6 @@
 {application, cgolam, [
 	{description, "Conways Game of life, And modifications"},
-	{vsn, "0.9.0"},
+	{vsn, "0.9.1"},
 	{registered, [
 		cgolam_sup,
 		cgolam_game_sup

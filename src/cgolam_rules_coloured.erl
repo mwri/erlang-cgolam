@@ -147,4 +147,15 @@ init(#cgolam_rules_coloured{field_mod=FieldMod}, Field0, default, InitCfg) ->
 		lists:seq(1, Clusters)
 	),
 	Field1
+;
+
+init(#cgolam_rules_coloured{field_mod=FieldMod}, Field0, term, InitCfg) ->
+	{value, {set, InitTerm}} = lists:keysearch(set, 1, InitCfg),
+	lists:foldl(
+		fun ({{X, Y}, Col = {col, _RGB}}, Field0Acc) ->
+			FieldMod:set(Field0Acc, X, Y, Col)
+			end,
+		Field0,
+		InitTerm
+	)
 .

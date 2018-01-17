@@ -35,6 +35,66 @@ This looks like different species competing and interbreeding, but
 the rules are the same as the standard game, so they are cooperative
 really.
 
+## Multiple species
+
+To see an attempt at a true multi species varient, try this one:
+
+```erlang
+cgolam:start([
+    {title, "UNcooperative multi species CGoL varient"},
+    {interval, 50},
+    {rules, cgolam_rules_species3, [{colmatch_algorithm, common_duo}]},
+    {field, cgolam_field_ets, []},
+    {width, 150}, {height, 150},
+    {display, cgolam_display_wx, [{sqsize, 5}]},
+    {init, cgolam_rules_species3, default, [
+        {cluster_size, 300},
+        {cluster_density, 100},
+        {clusters, 3}
+    ]}
+]).
+```
+
+A bit like CGoL generally, it's not so much a life simulation as a
+curious demonstration of emergent behaviour, it's difficult to say
+if this exhibits any real competition, but there are elements of that
+inherent to this `cgolam_rules_species3` algorithm certainly.
+
+A single colour will perform entirely according the the CGoL rules
+but when multiple colours colide, like the coloured version above the
+results can be a colour combination... but the difference here is that
+the colours are actually entirely independent from each other and a
+colour merge only occurs when there is competition for a common cell
+(i.e. in a given game cycle two different colours both want to occupy
+the same cell), where as two colours can in fact operate along side
+one another without having any affect on each other at all IF they
+never compete...
+
+What constitutes the same colour is a tricky thing, if an exact match
+is required then the chances of a new colour establishing are small
+so some tolerance tends to result in more interesting simulations.
+
+For a non tolerant version of the above try this:
+
+```erlang
+cgolam:start([
+    {title, "UNcooperative multi species CGoL varient"},
+    {interval, 50},
+    {rules, cgolam_rules_species3, [{colmatch_algorithm, intolerant_duo}]},
+    {field, cgolam_field_ets, []},
+    {width, 150}, {height, 150},
+    {display, cgolam_display_wx, [{sqsize, 5}]},
+    {init, cgolam_rules_species3, default, [
+        {cluster_size, 300},
+        {cluster_density, 100},
+        {clusters, 3}
+    ]}
+]).
+```
+
+In many ways the simple coloured version looks more interesting, though
+I think the 'species' versions are intellectually more so.
+
 ## Running games when the app starts
 
 The `games` application env variable is a list, and adding lists of properties
@@ -92,6 +152,8 @@ Another rules implementation is `cgolam_rules_coloured`, which, as noted
 above, also implements Conway's Game of Life, but uses different colours
 for the cells, with new cells (becoming alive from dead) assuming a colour
 mix of the surrounding cells.
+
+![IMAGE DISPLAY ERROR](mddocs/colexample1.png)&nbsp;&nbsp;&nbsp;&nbsp;![IMAGE DISPLAY ERROR](mddocs/colexample2.png)
 
 ### field
 

@@ -109,4 +109,15 @@ init(#cgolam_rules_normal{field_mod=FieldMod}, Field0, default, InitCfg) ->
 		Field0,
 		lists:seq(1, Clusters)
 	)
+;
+
+init(#cgolam_rules_normal{field_mod=FieldMod}, Field0, term, InitCfg) ->
+	{value, {set, InitTerm}} = lists:keysearch(set, 1, InitCfg),
+	lists:foldl(
+		fun ({{X, Y}, Alive}, Field0Acc) ->
+			FieldMod:set(Field0Acc, X, Y, if Alive == false -> false; true -> true end)
+			end,
+		Field0,
+		InitTerm
+	)
 .
