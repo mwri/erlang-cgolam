@@ -6,4 +6,4 @@
 /logs/
 /otp.plt
 /.rebar/
-/test/*_tests_SUITE.beam
+/test/*.beam

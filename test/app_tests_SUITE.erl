@@ -11,7 +11,7 @@
 	{field, cgolam_field_ets, []},
 	{width, 60}, {height, 60},
 	{rules, cgolam_rules_normal, []},
-	{display, cgolam_display_wx, [
+	{display, cgolam_display_dummy, [
 		{sqsize, 4},
 		{title, "Good old CGoL"}
 	]}
@@ -124,7 +124,7 @@ test_default_game_start(_Config) ->
 
 
 test_game_start(_Config) ->
-	{ok, NewGamePid} = cgolam:start([{width, 5}, {height, 5}]),
+	{ok, NewGamePid} = cgolam:start([{width, 5}, {height, 5}, {display, cgolam_display_dummy}]),
 	% check it was started
 	[Pid1, Pid2] = cgolam:list(),
 	true = is_pid(Pid1),
@@ -134,7 +134,7 @@ test_game_start(_Config) ->
 
 
 test_game_start_stop(_Config) ->
-	{ok, NewGamePid} = cgolam:start([{width, 5}, {height, 5}]),
+	{ok, NewGamePid} = cgolam:start([{width, 5}, {height, 5}, {display, cgolam_display_dummy}]),
 	% check it was started
 	[Pid1, Pid2] = cgolam:list(),
 	true = is_pid(Pid1),

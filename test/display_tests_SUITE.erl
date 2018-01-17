@@ -8,7 +8,7 @@
 
 
 -define(display_modules, [
-	{cgolam_display_wx, [{title, "CGoL"}, {width, 5}, {height, 5}]}
+	{cgolam_display_dummy, [{title, "CGoL"}, {width, 5}, {height, 5}]}
 ]).
 
 -define(display_tests, [

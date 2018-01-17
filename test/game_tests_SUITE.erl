@@ -13,7 +13,7 @@
 	{rules, cgolam_rules_coloured, [{ignored_unknown, naff}]},
 	{field, cgolam_field_ets, [{not_found, 404}]},
 	{width, 100}, {height, 100},
-	{display, cgolam_display_wx, [{sqsize, 5}, {garbage, bar}]},
+	{display, cgolam_display_dummy, [{sqsize, 5}, {garbage, bar}]},
 	{init, cgolam_rules_coloured, default, [{
 		{cluster_size, 200},
 		{cluster_density, 150},
@@ -74,7 +74,7 @@ end_per_testcase(_Test, _Config) ->
 
 
 test_voluntary_stop(_Config) ->
-	{ok, NewGamePid} = cgolam:start([{width, 5}, {height, 5}]),
+	{ok, NewGamePid} = cgolam:start([{width, 5}, {height, 5}, {display, cgolam_display_dummy}]),
 	% check it was started
 	[Pid1, Pid2] = cgolam:list(),
 	true = is_pid(Pid1),
