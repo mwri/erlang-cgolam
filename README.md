@@ -1,4 +1,4 @@
-# cgolam [![Build Status](https://travis-ci.org/mwri/erlang-cgolam.svg?branch=master)](https://travis-ci.org/mwri/erlang-cgolam)
+# cgolam [![Build Status](https://travis-ci.org/mwri/erlang-cgolam.svg?branch=master)](https://travis-ci.org/mwri/erlang-cgolam) [![Coverage Status](https://coveralls.io/repos/github/mwri/erlang-cgolam/badge.svg?branch=master)](https://coveralls.io/github/mwri/erlang-cgolam?branch=master)
 
 This is an implementation of Conway's Game of Life, and modifications.
 You can run the standard game, but the rules, the display the backend

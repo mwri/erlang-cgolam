@@ -26,3 +26,4 @@ dialyzer: compile cgolam.plt
 
 test: compile dialyzer
 	rebar3 do ct,cover
+	rebar3 coveralls send
