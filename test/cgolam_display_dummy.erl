@@ -8,7 +8,6 @@
 
 
 -behaviour(cgolam_display).
--behaviour(gen_server).
 
 
 -export([new/1, stop/1, update/2, sync/1]).

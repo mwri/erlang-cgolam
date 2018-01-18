@@ -18,7 +18,7 @@
 %%     1> ok = application:start(cgolam).
 %%     ok
 %%     2> cgolam:start([{width, 100}, {height, 100}]).
-%%     {ok,<0.83.0>}
+%%     {ok,&lt;0.83.0&gt;}
 %% </pre>
 %%
 %% Other properties that may be given are as follows:
