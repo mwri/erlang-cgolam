@@ -1,5 +1,5 @@
 language: erlang
-script: make && make test
+script: make && make test && rebar3 as test coveralls send
 install: true
 otp_release:
   - 19.1

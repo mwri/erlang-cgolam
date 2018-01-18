@@ -8,11 +8,23 @@
 
 
 -define(rules_modules, [
-	{cgolam_rules_normal, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]},
-	{cgolam_rules_coloured, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]},
-	{cgolam_rules_species1, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]},
-	{cgolam_rules_species2, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]},
-	{cgolam_rules_species3, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]}
+	{normal, cgolam_rules_normal, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]},
+	{coloured, cgolam_rules_coloured, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]},
+	{species1, cgolam_rules_species1, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]},
+	{species2, cgolam_rules_species2, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]},
+	{species3, cgolam_rules_species3, [{field, cgolam_field_tuples, [{width, 20}, {height, 20}]}]},
+	{species3chb, cgolam_rules_species3, [
+		{field, cgolam_field_tuples, [{width, 20}, {height, 20}]},
+		{colmatch_algorithm, common_highbit}
+		]},
+	{species3cd, cgolam_rules_species3, [
+		{field, cgolam_field_tuples, [{width, 20}, {height, 20}]},
+		{colmatch_algorithm, common_duo}
+		]},
+	{species3id, cgolam_rules_species3, [
+		{field, cgolam_field_tuples, [{width, 20}, {height, 20}]},
+		{colmatch_algorithm, intolerant_duo}
+		]}
 ]).
 
 -define(rules_tests, [
@@ -23,12 +35,12 @@
 
 
 all() ->
-	[{group, Mod} || {Mod, _ModCfg} <- ?rules_modules]
+	[{group, GrpName} || {GrpName, _Mod, _ModCfg} <- ?rules_modules]
 .
 
 
 groups() ->
-	[{Mod, [parallel, {rules, Mod, ModCfg}], ?rules_tests} || {Mod, ModCfg} <- ?rules_modules]
+	[{GrpName, [parallel, {rules, Mod, ModCfg}], ?rules_tests} || {GrpName, Mod, ModCfg} <- ?rules_modules]
 .
 
 
@@ -79,12 +91,12 @@ test_calc(Config) ->
 		),
 	FalseCount = length(lists:filter(fun(R) -> R == false end, Results)),
 	AliveCount = length(lists:filter(fun(R) -> R /= false end, Results)),
-	if (FalseCount < 56) or (FalseCount > 456) ->
+	if (FalseCount < 4) or (FalseCount > 508) ->
 			throw({false_count_unfeasible, FalseCount});
 		true ->
 			ok
 		end,
-	if (AliveCount < 56) or (AliveCount > 456) ->
+	if (AliveCount < 4) or (AliveCount > 508) ->
 			throw({alive_count_unfeasible, AliveCount});
 		true ->
 			ok
@@ -125,13 +137,25 @@ cellstate_initvalue(cgolam_rules_coloured) ->
 	}}
 ;
 cellstate_initvalue(cgolam_rules_species1) ->
-	{col, {40, 200, 100}}
+	{col, {
+		trunc(rand:uniform()*2) bsl 7,
+		trunc(rand:uniform()*2) bsl 7,
+		trunc(rand:uniform()*2) bsl 7
+	}}
 ;
 cellstate_initvalue(cgolam_rules_species2) ->
-	{col, {40, 200, 100}}
+	{col, {
+		trunc(rand:uniform()*2) bsl 7,
+		trunc(rand:uniform()*2) bsl 7,
+		trunc(rand:uniform()*2) bsl 7
+	}}
 ;
 cellstate_initvalue(cgolam_rules_species3) ->
-	{col, {40, 200, 100}}
+	{col, {
+		trunc(rand:uniform()*2) bsl 7,
+		trunc(rand:uniform()*2) bsl 7,
+		trunc(rand:uniform()*2) bsl 7
+	}}
 .
 
 

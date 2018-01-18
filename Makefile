@@ -8,7 +8,8 @@ docs:
 
 clean:
 	rebar3 clean
-	rm -rf doc/*.html doc/edoc-info doc/erlang.png doc/stylesheet.css _build
+	rm -rf doc/*.html doc/edoc-info doc/erlang.png doc/stylesheet.css _build \
+		cgolam.plt otp.plt
 
 otp.plt: Makefile
 	dialyzer --build_plt --output_plt otp.plt --apps \
@@ -26,4 +27,3 @@ dialyzer: compile cgolam.plt
 
 test: compile dialyzer
 	rebar3 do ct,cover
-	rebar3 coveralls send
