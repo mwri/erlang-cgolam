@@ -3,5 +3,6 @@ script: make && make test && rebar3 as test coveralls send
 install: true
 otp_release:
   - 19.1
+  - 20.3
 after_failure:
   - cat logs/raw.log
