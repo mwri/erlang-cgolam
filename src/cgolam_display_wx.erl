@@ -112,7 +112,7 @@ init(DisplayModCfg) ->
 	{value, {height, Height}} = lists:keysearch(height, 1, DisplayModCfg),
 	SqSize = case lists:keysearch(sqsize, 1, DisplayModCfg) of
 		{value, {sqsize, I}} -> I;
-		false -> 1
+		false -> 4
 		end,
 	Wx = wx:new(),
 	Frame = wxFrame:new(Wx, ?wxID_ANY, Title),
