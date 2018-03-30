@@ -8,7 +8,7 @@
 
 <b>LICENSING</b>
 
-This file is part of the Erlang A* search library called 'astar'.
+This file is part of the Conway's Game of Life (And Modifications) called 'cgolam'.
 
 'cgolam' is free software, you can redistribute it and/or modify
 it under the terms of the MIT License.

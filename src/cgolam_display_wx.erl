@@ -44,7 +44,7 @@
 -export_type([cgolam_display_wx/0]).
 
 
-%% @doc Create a new display.
+%% @private
 
 -spec new
 	(DisplayModCfg :: list()) ->
@@ -57,7 +57,7 @@ new(DisplayModCfg) ->
 .
 
 
-%% @doc Update the display.
+%% @private
 
 -spec update
 	(Display0 :: cgolam_display_wx(), FieldUpdate :: cgolam_display:updates()) ->
@@ -69,7 +69,7 @@ update(Pid, FieldUpdate) ->
 .
 
 
-%% @doc Sync (update display).
+%% @private
 
 -spec sync
 	(Display0 :: cgolam_display_wx()) ->
@@ -81,7 +81,7 @@ sync(Pid) ->
 .
 
 
-%% @doc Stop / close the display.
+%% @private
 
 -spec stop
 	(Display :: cgolam_display_wx()) ->
@@ -92,6 +92,8 @@ stop(Pid) ->
 	ok
 .
 
+
+%% @private
 
 -spec start_link
 	(list()) ->

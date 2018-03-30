@@ -4,7 +4,7 @@ compile:
 	rebar3 compile
 
 docs:
-	rebar3 doc
+	rebar3 edoc
 
 clean:
 	rebar3 clean

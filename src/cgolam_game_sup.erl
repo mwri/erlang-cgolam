@@ -1,6 +1,6 @@
 %% @author Michael Wright <mjw@methodanalysis.com>
 %% @copyright 2018 Michael Wright <mjw@methodanalysis.com>
-%% 
+%%
 %% @doc Game supervisor module for 'cgolam' app.
 
 
@@ -42,7 +42,7 @@ init([]) ->
 .
 
 
-%% @doc Start a game.
+%% @private
 
 -spec start_game
 	(GameCfg :: list()) ->
@@ -53,7 +53,7 @@ start_game(GameCfg) ->
 .
 
 
-%% @doc Stop a game.
+%% @private
 
 -spec stop_game
 	(Pid :: pid()) ->
@@ -64,7 +64,7 @@ stop_game(Pid) ->
 .
 
 
-%% @doc Get a list of running games.
+%% @private
 
 -spec list_games
 	() ->

@@ -26,7 +26,7 @@
 -export_type([cgolam_field_gb_trees/0]).
 
 
-%% @doc Create a new field.
+%% @private
 
 -spec new
 	(FieldModCfg :: list()) ->
@@ -50,7 +50,7 @@ new(FieldModCfg) ->
 .
 
 
-%% @doc Return the field's width.
+%% @private
 
 -spec width
 	(Field :: cgolam_field_gb_trees()) ->
@@ -61,7 +61,7 @@ width(#cgolam_field_gb_trees{width=Width}) ->
 .
 
 
-%% @doc Return the field's height.
+%% @private
 
 -spec height
 	(Field :: cgolam_field_gb_trees()) ->
@@ -72,7 +72,7 @@ height(#cgolam_field_gb_trees{height=Height}) ->
 .
 
 
-%% @doc Get a field cell state.
+%% @private
 
 -spec get
 	(Field :: cgolam_field_gb_trees(), X :: integer(), Y :: integer()) ->
@@ -100,7 +100,7 @@ get(#cgolam_field_gb_trees{tree=Tree}, X, Y) ->
 .
 
 
-%% @doc Set a field cell state.
+%% @private
 
 -spec set
 	(Field0 :: cgolam_field_gb_trees(), X :: integer(), Y :: integer(), CellState :: term()) ->
@@ -129,7 +129,7 @@ set(State = #cgolam_field_gb_trees{tree=Tree}, X, Y, NewCellState) ->
 .
 
 
-%% @doc Return ALL the cells (coordinates and states together).
+%% @private
 
 -spec all
 	(Field :: cgolam_field_gb_trees()) ->

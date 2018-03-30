@@ -55,7 +55,7 @@
 -export_type([cgolam_rules_species3/0]).
 
 
-%% @doc Create a new ruler.
+%% @private
 
 -spec new
 	(RulesModCfg :: list()) ->
@@ -77,7 +77,7 @@ new(RulesModCfg) ->
 .
 
 
-%% @doc Calculate a new cell state.
+%% @private
 
 -spec calc
 	(Rules :: cgolam_rules_species3(), Field :: cgolam_field:field(), X :: integer(), Y :: integer()) ->
@@ -287,7 +287,7 @@ adjust_brightness({R, G, B}, F) ->
 .
 
 
-%% @doc Initialise a field.
+%% @private
 
 -spec init
 	(Rules :: cgolam_rules_species3(), Field0 :: cgolam_field:field(), Type :: atom(), InitCfg :: list()) ->

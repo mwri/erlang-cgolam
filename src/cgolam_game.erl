@@ -30,7 +30,7 @@
 }).
 
 
-%% Start a game process and link to it.
+%% @private
 
 -spec start_link
 	(list()) ->
@@ -41,7 +41,7 @@ start_link(GameCfg) ->
 .
 
 
-%% @doc Stop / close the game.
+%% @private
 
 -spec stop
 	(Pid :: pid()) ->
@@ -178,7 +178,7 @@ handle_info(Msg, State) ->
 
 handle_cast(stop, State) ->
 	{stop, normal, State}
-;   
+;
 
 handle_cast(Msg, State) ->
 	{stop, {error, {unexpected_cast, Msg}}, State}
@@ -190,7 +190,7 @@ handle_cast(Msg, State) ->
 
 handle_call(Msg, _From, State) ->
 	{reply, {error, {unexpected_call, Msg}}, {error, {unexpected_cast, Msg}}, State}
-.   
+.
 
 
 %% @private

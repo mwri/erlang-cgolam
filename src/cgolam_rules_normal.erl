@@ -24,7 +24,7 @@
 -export_type([cgolam_rules_normal/0]).
 
 
-%% @doc Create a new ruler.
+%% @private
 
 -spec new
 	(RulesModCfg :: list()) ->
@@ -41,7 +41,7 @@ new(RulesModCfg) ->
 .
 
 
-%% @doc Calculate a new cell state.
+%% @private
 
 -spec calc
 	(Rules :: cgolam_rules_normal(), Field :: cgolam_field:field(), X :: integer(), Y :: integer()) ->
@@ -69,7 +69,7 @@ calc(#cgolam_rules_normal{field_mod=FieldMod}, Field, X, Y) ->
 .
 
 
-%% @doc Initialise a field.
+%% @private
 
 -spec init
 	(Rules :: cgolam_rules_normal(), Field0 :: cgolam_field:field(), Type :: atom(), InitCfg :: list()) ->

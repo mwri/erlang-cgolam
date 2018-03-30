@@ -26,7 +26,7 @@
 -export_type([cgolam_field_tuples/0]).
 
 
-%% @doc Create a new field.
+%% @private
 
 -spec new
 	(FieldModCfg :: list()) ->
@@ -48,7 +48,7 @@ new(FieldModCfg) ->
 .
 
 
-%% @doc Return the field's width.
+%% @private
 
 -spec width
 	(Field :: cgolam_field_tuples()) ->
@@ -59,7 +59,7 @@ width(#cgolam_field_tuples{width=Width}) ->
 .
 
 
-%% @doc Return the field's height.
+%% @private
 
 -spec height
 	(Field :: cgolam_field_tuples()) ->
@@ -70,7 +70,7 @@ height(#cgolam_field_tuples{height=Height}) ->
 .
 
 
-%% @doc Get a field cell state.
+%% @private
 
 -spec get
 	(Field :: cgolam_field_tuples(), X :: integer(), Y :: integer()) ->
@@ -97,7 +97,7 @@ get(#cgolam_field_tuples{data=Data}, X, Y) ->
 .
 
 
-%% @doc Set a field cell state.
+%% @private
 
 -spec set
 	(Field0 :: cgolam_field_tuples(), X :: integer(), Y :: integer(), CellState :: term()) ->
@@ -120,9 +120,6 @@ set(State = #cgolam_field_tuples{height=Height}, X, Y, NewCellState) when Y >= H
 ;
 
 set(State = #cgolam_field_tuples{data=Data}, X, Y, NewCellState) ->
-	%Row1 = erlang:element(Y + 1, Data),
-	%Row2 = erlang:setelement(X + 1, Row1, NewCellState),
-	%DataX = erlang:setelement(Y + 1, Data, Row2),
 	State#cgolam_field_tuples{
 			data = erlang:setelement(
 					Y + 1,
@@ -136,8 +133,7 @@ set(State = #cgolam_field_tuples{data=Data}, X, Y, NewCellState) ->
 		}
 .
 
-
-%% @doc Return ALL the cells (coordinates and states together).
+%% @private
 
 -spec all
 	(Field :: cgolam_field_tuples()) ->
